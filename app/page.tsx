@@ -5,6 +5,7 @@ import { TriviaQuestionModel } from "./types/models";
 import { getTriviaQuestions } from "./data/api";
 import { ERROR_MESSAGES, ResponseCode } from "./constants/response";
 import { transformTriviaQuestionDto } from "./data/transformers";
+import { TriviaQuestion } from "./components";
 
 export default function Home() {
   const [triviaQuestions, setTriviaQuestions] = useState<
@@ -28,19 +29,28 @@ export default function Home() {
     fetchTriviaQuestions();
   }, []);
 
+  const renderTriviaQuestions = () => {
+    if (!triviaQuestions.length) return null;
+
+    return triviaQuestions.map((question, index) => (
+      <TriviaQuestion key={index} question={question} />
+    ));
+  };
+
   return (
     <main className="p-8">
       <h1 className="text-lg font-bold">Trivia Quiz</h1>
       <p className="text-slate-300">Welcome to the Trivia Quiz!</p>
       <hr className="my-2 h-0.5 border-t-0 bg-white/10" />
-      <p>Final task: </p>
-      <code className="text-yellow-300">app/utils/array.ts</code>
-      <p>Use generics to make shuffle work with any array type.</p>
-      <p>Afterwards, checkout to final:</p>
-      <code className="text-cyan-300">git checkout final</code>
+      <section className="grid grid-cols-4 gap-4">
+        {renderTriviaQuestions()}
+      </section>
       {errorMessage ? (
         <p className="text-red-500 py-2">Error: {errorMessage}</p>
       ) : null}
+      <p className="text-slate-300 mt-4 text-center">
+        Refresh to get new questions!
+      </p>
     </main>
   );
 }
