@@ -7,7 +7,8 @@ export default function Home() {
       <p>Start by doing task 1: </p>
       <code className="text-yellow-300">app/types/dtos/trivia-question.ts</code>
       <p>
-        Change the <b>type</b> of the &quot;type&quot; property to an enum.
+        Change the <b>type</b> of the &quot;type&quot; and
+        &quot;difficulty&quot; properties to an enums.
       </p>
       <p className="py-2">
         Example of <b>enum</b> can be found in&nbsp;
