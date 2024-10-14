@@ -1,7 +1,12 @@
 import { TriviaQuestionDto } from "@/app/types/dtos";
 import { TriviaQuestionModel } from "@/app/types/models";
 
-// Task 2: Create a transformer function for the Trivia Question DTO.
-// Afterwards, trivia-question.test.ts should pass (pnpm test).
-
-export const transformTriviaQuestionDto = () => {};
+export const transformTriviaQuestionDto = ({
+  correct_answer,
+  incorrect_answers,
+  ...rest
+}: TriviaQuestionDto): TriviaQuestionModel => ({
+  ...rest,
+  correctAnswer: correct_answer,
+  incorrectAnswers: incorrect_answers,
+});
