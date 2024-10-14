@@ -1,6 +1,11 @@
+import {
+  TriviaQuestionDifficulty,
+  TriviaQuestionType,
+} from "@/app/constants/trivia-question";
+
 export type TriviaQuestionDto = {
-  type: string; // Task 1: Use an enum here. It can be either "multiple" or "boolean".
-  difficulty: string; // And here. It can be either "easy", "medium", or "hard".
+  type: TriviaQuestionType;
+  difficulty: TriviaQuestionDifficulty;
   category: string;
   question: string;
   correct_answer: string;
